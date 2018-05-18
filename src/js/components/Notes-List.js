@@ -5,21 +5,7 @@ import '../../scss/Notes-List.scss';
 import {deleteNote} from '../actions/index';
 
 class NotesList extends Component {
-	componentDidMount () {
-        var grid = this.refs.grid;
-        this.msnry = new Masonry( grid, {
-            itemSelector: '.note',
-            columnWidth: 200,
-            gutter: 10,
-            isFitWidth: true
-        });
-    }
-    componentDidUpdate(prevProps) {
-        if (this.props.notes.length !== prevProps.notes.length || this.props.searchQuery !== prevProps.searchQuery) {
-            this.msnry.reloadItems();
-            this.msnry.layout();
-        }
-    }
+	
 	showList(){
 		var rezult = this.props.notes.filter((el) => {
             var searchValue = el.text.toLowerCase();
@@ -43,7 +29,7 @@ class NotesList extends Component {
 	}
 	render () {
 		return (
-			<div ref="grid">
+			<div>
 				{this.showList()}
 			</div>
 		)
