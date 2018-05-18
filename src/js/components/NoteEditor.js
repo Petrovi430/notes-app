@@ -8,13 +8,16 @@ import '../../scss/NoteEditor.scss';
 
 class NoteEditor extends Component {
     newNote (){
-        let note = {
-            text: this.props.colors.text,
-            color: this.props.colors.color,
-            id: Date.now()
+        if(this.props.colors.text !== ''){
+            let note = {
+                text: this.props.colors.text,
+                color: this.props.colors.color,
+                id: Date.now()
+            }
+            this.refs.textarea.value = '';
+            this.props.colors.text = '';
+            return note;
         }
-        this.refs.textarea.value = '';
-        return note;
     }
     render (){
         return (
