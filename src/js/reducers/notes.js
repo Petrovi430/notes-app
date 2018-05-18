@@ -25,10 +25,12 @@ export default function(state = initialState, action) {
     if (action !== undefined) {
         switch(action.type){
             case "ADD_NOTE":{
-                let newState = state.map((el) => {return el});
-                newState.unshift(action.payload);
-                return newState;
-                break;
+                if(action.payload !== undefined){
+                    let newState = state.map((el) => {return el});
+                    newState.unshift(action.payload);
+                    return newState;
+                }
+                break; 
             } 
             case "DELETE_NOTE":{
                 let noteId = action.payload.id;
